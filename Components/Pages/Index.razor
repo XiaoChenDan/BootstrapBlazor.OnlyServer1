@@ -1,0 +1,7 @@
+﻿@page "/"
+@attribute [TabItemOption(Text = "Index", Closable = false)]
+
+<PageTitle>Index</PageTitle>
+
+<TreeView TItem="TreeFoo" ShowCheckbox="true" ClickToggleNode="true" ClickToggleCheck="false" Items="@GetLazyItems()" OnExpandNodeAsync="OnExpandNodeAsync"
+          AutoCheckChildren="false"></TreeView>
