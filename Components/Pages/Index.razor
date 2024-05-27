@@ -1,7 +1,45 @@
 ﻿@page "/"
 @attribute [TabItemOption(Text = "Index", Closable = false)]
+@inject IStringLocalizer<Foo> FooLocalizer
 
 <PageTitle>Index</PageTitle>
 
-<TreeView TItem="TreeFoo" ShowCheckbox="true" ClickToggleNode="true" ClickToggleCheck="false" Items="@GetLazyItems()" OnExpandNodeAsync="OnExpandNodeAsync"
-          AutoCheckChildren="false"></TreeView>
+<Button Text="点击测试" OnClick="OpenDialog" />
+<div style="position:absolute;z-index:9999; @DialogStyleString">
+    <div class="d-flex border border-1 rounded-2 bg-white p-2" style="height:450px;width:600px;">
+        <Table TItem="Foo" Items="@Items.Take(3)" IsBordered="true" ShowToolbar="true" ShowEmpty="true">
+            <TableColumns>
+                <TableColumn @bind-Field="@context.DateTime" Width="180" />
+                <TableColumn @bind-Field="@context.Name" />
+                <TableColumn @bind-Field="@context.Address" />
+            </TableColumns>
+        </Table>
+    </div>
+</div>
+
+<Divider/>
+
+<Tab IsBorderCard="true">
+    <TabItem Text="选项卡 1">
+        <div class="d-flex border border-1 rounded-2 bg-white p-2" style="height:450px;width:600px;">
+            <Table TItem="Foo" Items="@Items.Take(3)" IsBordered="true" ShowToolbar="true" ShowEmpty="true">
+                <TableColumns>
+                    <TableColumn @bind-Field="@context.DateTime" Width="180" />
+                    <TableColumn @bind-Field="@context.Name" />
+                    <TableColumn @bind-Field="@context.Address" />
+                </TableColumns>
+            </Table>
+        </div>
+    </TabItem>
+    <TabItem Text="选项卡 2">
+        <div class="d-flex border border-1 rounded-2 bg-white p-2" style="height:450px;width:600px;">
+            <Table TItem="Foo" Items="@Items.Take(3)" IsBordered="true" ShowToolbar="true" ShowEmpty="true">
+                <TableColumns>
+                    <TableColumn @bind-Field="@context.DateTime" Width="180" />
+                    <TableColumn @bind-Field="@context.Name" />
+                    <TableColumn @bind-Field="@context.Address" />
+                </TableColumns>
+            </Table>
+        </div>
+    </TabItem>
+</Tab>
